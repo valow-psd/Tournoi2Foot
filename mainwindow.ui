@@ -23,6 +23,12 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>151</width>
+      <height>25</height>
+     </size>
+    </property>
     <property name="text">
      <string>Simuler le tournoi</string>
     </property>
@@ -35,6 +41,12 @@
       <width>171</width>
       <height>17</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>171</width>
+      <height>17</height>
+     </size>
     </property>
     <property name="text">
      <string>Entrez le nom de l'équipe</string>
@@ -49,6 +61,12 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>171</width>
+      <height>25</height>
+     </size>
+    </property>
    </widget>
    <widget class="QPushButton" name="button_ajouter_equipe">
     <property name="geometry">
@@ -58,6 +76,12 @@
       <width>121</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>121</width>
+      <height>25</height>
+     </size>
     </property>
     <property name="text">
      <string>+ Ajouter équipe</string>
@@ -72,6 +96,12 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>131</width>
+      <height>25</height>
+     </size>
+    </property>
     <property name="text">
      <string>Synchroniser</string>
     </property>
@@ -84,6 +114,12 @@
       <width>191</width>
       <height>17</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>191</width>
+      <height>17</height>
+     </size>
     </property>
     <property name="text">
      <string>[DB connexion ...]</string>
@@ -98,6 +134,12 @@
       <height>192</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>541</width>
+      <height>192</height>
+     </size>
+    </property>
    </widget>
    <widget class="QPushButton" name="button_ajouter_equipe_2">
     <property name="geometry">
@@ -107,6 +149,12 @@
       <width>151</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>151</width>
+      <height>25</height>
+     </size>
     </property>
     <property name="text">
      <string>- Supprimer équipe</string>

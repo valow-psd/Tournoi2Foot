@@ -9,6 +9,9 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 #include <QVariant>
+#include <iostream>
+#include <string>
+#include <cmath>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +35,8 @@ private slots:
     void on_loadTable_clicked();
 
     void on_button_ajouter_equipe_2_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
