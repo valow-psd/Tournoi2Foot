@@ -10,11 +10,21 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Si utilisation de MySQL
+/*
     mydb = QSqlDatabase::addDatabase("QMYSQL");
     mydb.setHostName("localhost");
     mydb.setDatabaseName("teams_ekip");
     mydb.setUserName("ekip");
     mydb.setPassword("lefootccool");
+*/
+
+
+    // Si utilisation de SQLite en local
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
+    // remplacer avec le chemin correct où se trouve le fichier teams.db
+    mydb.setDatabaseName("/home/valow/TournoiFoot/teams.db");
+
 
     if (mydb.open())
        {
