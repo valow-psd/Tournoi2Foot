@@ -66,55 +66,43 @@ void MainWindow::on_button_ajouter_equipe_clicked()
 
     if (mydb.open())
        {
-            QSqlQuery query(mydb);
+            QSqlQuery query;
 
-            query.prepare("INSERT INTO teams(nom_equipe) VALUES ('OM');");
+            query.prepare("INSERT INTO teams(nom_equipe) VALUES ('" + t_nom_equipe +"');");
 
             query.exec();
-            ui->db_text->setText("DB Connectée 2");
-            qDebug() << "Database: connection ok 2";
+            //ui->db_text->setText("DB Connectée 2");
+            //qDebug() << "Database: connection ok 2";
 
        }
        else
        {
-            ui->db_text->setText("DB Non-connectée 2");
-           qDebug() << "Error: connection with database failed 2";
-           mydb.close();
+               //ui->db_text->setText("DB Non-connectée 2");
+               qDebug() << "Error: connection with database failed 2";
+               mydb.close();
        }
 
 
-
-    //qDebug() << "abcv";
-
-
-
-    QMessageBox::information(this, "Ajout équipe", QString("L'équipe OM" + t_nom_equipe + " a été ajoutée !"));
+    QMessageBox::information(this, "Ajout équipe", QString("L'équipe " + t_nom_equipe + " a été ajoutée !"));
 }
 
 
 void MainWindow::on_loadTable_clicked()
 {
 
-    QSqlQuery query;
+    QSqlQueryModel *modal = new QSqlQueryModel();
 
-    QString data = "" ;
-
-    query.exec("SELECT * FROM teams;");
-    qDebug() << query.exec("SELECT nom_equipe, victoires, nuls, defaites, (victoires * 3 + nuls) as points FROM teams;");
+    QSqlQuery* query = new QSqlQuery(mydb);
 
 
-        while(query.next()){
-            for(int i = 0; i<4; i++){
-            data = query.value(i).toString() + " | ";
-             qDebug() << query.value(i).toString();
+    query->prepare("SELECT nom_equipe, victoires, nuls, defaites, (victoires * 3 + nuls) as points FROM teams ORDER BY points DESC;");
+    query->exec();
 
-        }
-    }
+    modal->setQuery(*query);
 
+    ui->tableView->setModel(modal);
 
-    ui->textEdit->setText(data);
+    qDebug() << (modal->rowCount());
 
-    query.clear();
-    mydb.close();
 
 }
