@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1253</width>
-    <height>363</height>
+    <width>894</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,8 +30,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>30</y>
+      <x>690</x>
+      <y>50</y>
       <width>171</width>
       <height>17</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QLineEdit" name="lineEdit_nom_equipe">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>50</y>
+      <x>690</x>
+      <y>70</y>
       <width>171</width>
       <height>25</height>
      </rect>
@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="button_ajouter_equipe">
     <property name="geometry">
      <rect>
-      <x>1070</x>
-      <y>90</y>
+      <x>710</x>
+      <y>110</y>
       <width>121</width>
       <height>25</height>
      </rect>
@@ -99,16 +99,35 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="button_ajouter_equipe_2">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>140</y>
+      <width>151</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>- Supprimer équipe</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1253</width>
+     <width>894</width>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSoker">
+    <property name="title">
+     <string>Soker</string>
+    </property>
+   </widget>
+   <addaction name="menuSoker"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

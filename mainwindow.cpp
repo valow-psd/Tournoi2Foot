@@ -106,3 +106,29 @@ void MainWindow::on_loadTable_clicked()
 
 
 }
+
+void MainWindow::on_button_ajouter_equipe_2_clicked()
+{
+    QString t_nom_equipe = ui->lineEdit_nom_equipe->text();
+
+    if (mydb.open())
+       {
+            QSqlQuery query;
+
+            query.prepare("DELETE FROM `teams` WHERE nom_equipe LIKE '" +t_nom_equipe +  "';");
+
+            query.exec();
+            //ui->db_text->setText("DB Connectée 2");
+            //qDebug() << "Database: connection ok 2";
+
+       }
+       else
+       {
+               //ui->db_text->setText("DB Non-connectée 2");
+               qDebug() << "Error: connection with database failed 2";
+               mydb.close();
+       }
+
+
+    QMessageBox::information(this, "Ajout équipe", QString("L'équipe " + t_nom_equipe + " a été supprimée !"));
+}
