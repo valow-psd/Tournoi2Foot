@@ -132,3 +132,8 @@ void MainWindow::on_button_ajouter_equipe_2_clicked()
 
     QMessageBox::information(this, "Ajout équipe", QString("L'équipe " + t_nom_equipe + " a été supprimée !"));
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+
+}
