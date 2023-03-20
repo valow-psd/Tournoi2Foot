@@ -1,0 +1,28 @@
+ALTER TABLE equipes ADD COLUMN id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT; 
+ALTER TABLE equipes ADD COLUMN nom_equipe VARCHAR(20); 
+ALTER TABLE equipes ADD COLUMN victoires INTEGER NOT NULL DEFAULT '0'; 
+ALTER TABLE equipes ADD COLUMN defaites INTEGER NOT NULL DEFAULT '0'; 
+ALTER TABLE equipes ADD COLUMN nuls INTEGER NOT NULL DEFAULT '0'; 
+ALTER TABLE equipes ADD COLUMN points INTEGER NOT NULL DEFAULT '0'; 
+
+
+DROP TABLE equipes;
+
+CREATE TABLE people (
+   id INTEGER PRIMARY KEY NOT NULL,
+   nom_equipe VARCHAR(20) NOT NULL,
+   victoires INTEGER NOT NULL DEFAULT '0',
+   nuls INTEGER NOT NULL DEFAULT '0',
+   defaites INTEGER NOT NULL DEFAULT '0',
+   points INTEGER NOT NULL DEFAULT '0'
+);
+
+
+INSERT INTO teams (nom_equipe,victoires,nuls,defaites) VALUES (
+  'Paris SG',
+  '1',
+  '1',
+  '1'
+);
+
+
