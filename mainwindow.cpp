@@ -3,6 +3,8 @@
 
 #include <QMessageBox>
 #include <QString>
+#include <QDir>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,20 +12,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Si utilisation de MySQL
-/*
-    mydb = QSqlDatabase::addDatabase("QMYSQL");
-    mydb.setHostName("localhost");
-    mydb.setDatabaseName("teams_ekip");
-    mydb.setUserName("ekip");
-    mydb.setPassword("lefootccool");
-*/
-
+    QDir dir;
+    qDebug() << dir.absoluteFilePath("teams.db");
 
     // Si utilisation de SQLite en local
     mydb = QSqlDatabase::addDatabase("QSQLITE");
-    // remplacer avec le chemin correct où se trouve le fichier teams.db
-    mydb.setDatabaseName("/home/valow/TournoiFoot/teams.db");
+    mydb.setDatabaseName(dir.absoluteFilePath("teams.db"));
 
 
     if (mydb.open())
