@@ -36,6 +36,8 @@
   - Pour ajouter une nouvelle équipe dans le classement : entrer le nom de l'équipe dans la zone de texte prévue à cet effet, puis `+ Ajouter équipe`
   - Pour supprimer une équipe du tournoi : entrer le nom de l'équipe (dans la même casse qu'affichée dans le classement) dans la zone de texte prévue à cet effet, puis `- Supprimer équipe`
   - Pour lancer le tournoi : `Simuler le tournoi` puis `Synchroniser`
+  
+  ![appli_finale](https://user-images.githubusercontent.com/80098893/226624139-796ad6ac-4d0e-4a87-b72e-bfd7fe105e20.png)
 
   
   ## ⚠️ Problèmes rencontrés
