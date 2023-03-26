@@ -220,3 +220,8 @@ void MainWindow::on_pushButton_clicked()
 bool in(std::list mylist , int val){
     for (int ele  )
 }
+
+void MainWindow::on_BUTTON_reinitScores_clicked()
+{
+
+}
