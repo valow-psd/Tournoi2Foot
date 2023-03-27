@@ -37,6 +37,7 @@ public:
     QLabel *db_text;
     QTableView *tableView;
     QPushButton *button_ajouter_equipe_2;
+    QPushButton *on_BUTTON_reinitScores_clicked;
     QMenuBar *menubar;
     QMenu *menuSoker;
     QStatusBar *statusbar;
@@ -80,6 +81,9 @@ public:
         button_ajouter_equipe_2->setObjectName(QString::fromUtf8("button_ajouter_equipe_2"));
         button_ajouter_equipe_2->setGeometry(QRect(700, 140, 151, 25));
         button_ajouter_equipe_2->setMaximumSize(QSize(151, 25));
+        on_BUTTON_reinitScores_clicked = new QPushButton(centralwidget);
+        on_BUTTON_reinitScores_clicked->setObjectName(QString::fromUtf8("on_BUTTON_reinitScores_clicked"));
+        on_BUTTON_reinitScores_clicked->setGeometry(QRect(712, 300, 151, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -107,6 +111,7 @@ public:
         loadTable->setText(QApplication::translate("MainWindow", "Synchroniser", nullptr));
         db_text->setText(QApplication::translate("MainWindow", "[DB connexion ...]", nullptr));
         button_ajouter_equipe_2->setText(QApplication::translate("MainWindow", "- Supprimer \303\251quipe", nullptr));
+        on_BUTTON_reinitScores_clicked->setText(QApplication::translate("MainWindow", "R\303\251initaliser les scores", nullptr));
         menuSoker->setTitle(QApplication::translate("MainWindow", "Soker", nullptr));
     } // retranslateUi
 

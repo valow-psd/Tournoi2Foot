@@ -160,7 +160,7 @@
      <string>- Supprimer équipe</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="on_BUTTON_reinitScores_clicked">
     <property name="geometry">
      <rect>
       <x>712</x>
