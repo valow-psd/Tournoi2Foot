@@ -65,6 +65,7 @@ void MainWindow::on_button_ajouter_equipe_clicked()
         query.prepare("INSERT INTO teams(nom_equipe) VALUES ('" + t_nom_equipe + "');");
 
         query.exec();
+        MainWindow::on_loadTable_clicked();
         // ui->db_text->setText("DB Connectée 2");
         // qDebug() << "Database: connection ok 2";
     }
@@ -106,6 +107,8 @@ void MainWindow::on_button_ajouter_equipe_2_clicked()
         query.prepare("DELETE FROM `teams` WHERE nom_equipe LIKE '" + t_nom_equipe + "';");
 
         query.exec();
+
+        MainWindow::on_loadTable_clicked();
         // ui->db_text->setText("DB Connectée 2");
         // qDebug() << "Database: connection ok 2";
     }
@@ -258,29 +261,24 @@ void MainWindow::on_pushButton_clicked()
         qDebug() << "Error: connection with database failed 2";
         mydb.close();
     }
+    MainWindow::on_loadTable_clicked();
 
     // QMessageBox::information(this, "Tirage", QString("Le tournoi est fini !"));
 }
 
-void MainWindow::on_BUTTON_reinitScores_clicked()
-{
-    QSqlQuery query;
-    qDebug()<< "otot" ;
 
-    query.prepare("SELECT id FROM teams");
-    query.exec();
-    std::list<int> ids;
-    // ajout de tous les id dans une liste
-    while (query.next())
-    {
-        int id = query.value(0).toInt();
-        ids.push_back(id);
-        // qDebug() << id << "toto";
-    }
-    for (int ele : ids)
-    {
-        query.prepare("UPDATE teams SET defaites = 0 , victoires = 0 , nuls=0 ; ");
-        query.bindValue(0, ele);
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    if(mydb.open()){
+        QSqlQuery query;
+        query.prepare("UPDATE teams SET victoires = 0, defaites = 0, nuls = 0;");
         query.exec();
+        MainWindow::on_loadTable_clicked();
+        qDebug() << "sqfqgq";
+
+    }
+    else {
+        mydb.close();
     }
 }

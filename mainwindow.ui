@@ -160,17 +160,17 @@
      <string>- Supprimer équipe</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="on_BUTTON_reinitScores_clicked">
+   <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>712</x>
+      <x>770</x>
       <y>300</y>
-      <width>151</width>
+      <width>83</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Réinitaliser les scores</string>
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>
