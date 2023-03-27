@@ -7,6 +7,17 @@
 #include <list>
 #include <random>
 
+
+bool MainWindow::in(std::list<int> mylist , int val){
+    for (int ele : mylist ){
+        if (ele == val){
+            return true ;
+        }
+        qDebug() << ele ;
+    }
+    return false;
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -152,28 +163,52 @@ void MainWindow::on_pushButton_clicked()
         std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
         std::uniform_int_distribution<> distrib(0, ids.size());
         std::uniform_int_distribution<> distrib_nul(0, 1);
-        if (distrib_nul()==0){// cas d'une victoire et d'une defaite 
-            //ajout de la vicoire 
-            std::list<int>::iterator it = ids.begin();
-            std::advance(it, distrib(gen));
-            // ajout des point a la bdd
-            int id_winner = int(*it) ;
-            // qDebug() << id_winner ;
-            query.prepare("UPDATE teams SET victoires = victoires +1 WHERE id = ?; ");
-            query.bindValue(0 ,id_winner);
-            query.exec();
-            tirer.push_back(id_winner));
-            // ajoute de la defaite 
-            std::list<int>::iterator it = ids.begin();
-            std::advance(it, distrib(gen));
-            // ajout des point a la bdd
-            int id_defaite = int(*it) ;
-            // qDebug() << id_winner ;
-            query.prepare("UPDATE teams SET defaites = defaites +1 WHERE id = ?; ");
-            query.bindValue(0 ,id_defaite);
-            query.exec();
-            tirer.push_back(id_defaite));
-        }else{ // cas de l'egaliter  
+        for (int i = 0 ;i<num/2;i++){
+            if (distrib_nul(gen)==0){// cas d'une victoire et d'une defaite 
+                //ajout de la vicoire 
+                std::list<int>::iterator it = ids.begin();
+                std::advance(it, distrib(gen));
+                // ajout des point a la bdd
+                int id_winner = int(*it) ;
+                while(MainWindow::in(tirer , id_winner)){
+                    it = ids.begin();
+                    std::advance(it, distrib(gen));
+                }
+                query.prepare("UPDATE teams SET victoires = victoires +1 WHERE id = ?; ");
+                query.bindValue(0 ,id_winner);
+                query.exec();
+                tirer.push_back(id_winner);
+                
+                // ajoute de la defaite 
+                it = ids.begin();
+                std::advance(it, distrib(gen));
+                // ajout des point a la bdd
+                int id_defaite = int(*it) ;
+                while(MainWindow::in(tirer , id_defaite)){
+                    it = ids.begin();
+                    std::advance(it, distrib(gen));
+                }
+                // qDebug() << id_winner ;
+                query.prepare("UPDATE teams SET defaites = defaites +1 WHERE id = ?; ");
+                query.bindValue(0 ,id_defaite);
+                query.exec();
+                tirer.push_back(id_defaite);
+            }else{ // cas de l'egaliter  
+                for (int i = 0 i<2 ; i++){
+                    it = ids.begin();
+                    std::advance(it, distrib(gen));
+                    // ajout des point a la bdd
+                    int id_premier = int(*it) ;
+                    while(MainWindow::in(tirer , id_winner)){
+                        it = ids.begin();
+                        std::advance(it, distrib(gen));
+                    }
+                    query.prepare("UPDATE teams SET nuls = nuls +1 WHERE id = ?; ");
+                    query.bindValue(0 ,id_premier);
+                    query.exec();
+                    tirer.push_back(id_premier);
+                }
+            }
 
         }
         // qDebug() << query.exec("UPDATE teams SET defaites = defaites +1 WHERE id = 2;");
@@ -216,9 +251,6 @@ void MainWindow::on_pushButton_clicked()
     }
 
     // QMessageBox::information(this, "Tirage", QString("Le tournoi est fini !"));
-}
-bool in(std::list mylist , int val){
-    for (int ele  )
 }
 
 void MainWindow::on_BUTTON_reinitScores_clicked()
