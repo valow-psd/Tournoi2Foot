@@ -28,6 +28,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool in(std::list<int> , int );
+
 
 private slots:
     void on_button_ajouter_equipe_clicked();
