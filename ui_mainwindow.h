@@ -83,7 +83,7 @@ public:
         button_ajouter_equipe_2->setMaximumSize(QSize(151, 25));
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(770, 300, 83, 25));
+        pushButton_2->setGeometry(QRect(730, 260, 89, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -111,7 +111,7 @@ public:
         loadTable->setText(QApplication::translate("MainWindow", "Synchroniser", nullptr));
         db_text->setText(QApplication::translate("MainWindow", "[DB connexion ...]", nullptr));
         button_ajouter_equipe_2->setText(QApplication::translate("MainWindow", "- Supprimer \303\251quipe", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Mettre \303\240 0", nullptr));
         menuSoker->setTitle(QApplication::translate("MainWindow", "Soker", nullptr));
     } // retranslateUi
 

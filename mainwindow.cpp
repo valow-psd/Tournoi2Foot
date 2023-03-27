@@ -15,7 +15,6 @@ bool MainWindow::in(std::list<int> mylist, int val)
         {
             return true;
         }
-        qDebug() << ele;
     }
     return false;
 }
@@ -36,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         ui->db_text->setText("DB Connectée");
         qDebug() << "Database: connection ok";
+        MainWindow::on_loadTable_clicked();
+
     }
     else
     {
@@ -170,6 +171,7 @@ void MainWindow::on_pushButton_clicked()
         std::uniform_int_distribution<> distrib_nul(0, 1);
         for (int i = 0; i < num / 2; i++)
         {
+
             if (distrib_nul(gen) == 0)
             { // cas d'une victoire et d'une defaite
                 // ajout de la vicoire
@@ -177,10 +179,13 @@ void MainWindow::on_pushButton_clicked()
                 std::advance(it, distrib(gen));
                 // ajout des point a la bdd
                 int id_winner = int(*it);
+                qDebug() << MainWindow::in(tirer, id_winner) << tirer << id_winner;
                 while (MainWindow::in(tirer, id_winner))
                 {
                     it = ids.begin();
                     std::advance(it, distrib(gen));
+                    id_winner = int(*it);
+
                 }
                 query.prepare("UPDATE teams SET victoires = victoires +1 WHERE id = ?; ");
                 query.bindValue(0, id_winner);
@@ -192,10 +197,13 @@ void MainWindow::on_pushButton_clicked()
                 std::advance(it, distrib(gen));
                 // ajout des point a la bdd
                 int id_defaite = int(*it);
+                qDebug() << MainWindow::in(tirer, id_defaite) << tirer << id_defaite;
                 while (MainWindow::in(tirer, id_defaite))
                 {
                     it = ids.begin();
                     std::advance(it, distrib(gen));
+                    id_defaite = int(*it);
+
                 }
                 // qDebug() << id_winner ;
                 query.prepare("UPDATE teams SET defaites = defaites +1 WHERE id = ?; ");
@@ -211,10 +219,14 @@ void MainWindow::on_pushButton_clicked()
                     std::advance(it, distrib(gen));
                     // ajout des point a la bdd
                     int id_premier = int(*it);
+                    qDebug() << MainWindow::in(tirer, id_premier) << tirer << id_premier;
+
                     while (MainWindow::in(tirer, id_premier))
                     {
                         it = ids.begin();
                         std::advance(it, distrib(gen));
+                        id_premier = int(*it);
+
                     }
                     query.prepare("UPDATE teams SET nuls = nuls +1 WHERE id = ?; ");
                     query.bindValue(0, id_premier);
@@ -222,40 +234,9 @@ void MainWindow::on_pushButton_clicked()
                     tirer.push_back(id_premier);
                 }
             }
-        }
-        // qDebug() << query.exec("UPDATE teams SET defaites = defaites +1 WHERE id = 2;");
 
-        // qDebug() << *it << "aleatoire";
-
-        // qDebug() << modal << "toto";
-        /*
-                     for(int i = 1; i < 6; i++){
-                         //i.toString();
-                         QSqlQuery query;
-                         if(i == 1){
-                             qDebug() << "Victoires";
-                             query.prepare("UPDATE teams SET victoires = victoires +1 WHERE id = 1 OR id = 6; ");
-                             query.exec();
-                             qDebug() << query.exec("UPDATE teams SET victoires = victoires +1 WHERE id = 1;");
-                         }
-                         else if(i == 2) {
-                             qDebug() << "defaites";
-                             query.prepare("UPDATE teams SET defaites = defaites +1 WHERE id = 2;");
-                             query.exec();
-                             qDebug() << query.exec("UPDATE teams SET defaites = defaites +1 WHERE id = 2;");
-                         }
-                         else{
-                             qDebug() << "nuls";
-                             query.prepare("UPDATE teams SET nuls = nuls +1 WHERE id = 3 OR id = 4 OR id = 5; ");
-                             query.exec();
-                             qDebug() << query.exec("UPDATE teams SET nuls = nuls +1 WHERE id = 3 OR id = 4 OR id = 5;");
-                         }
-
-
-                     }
-                     */
     }
-    else
+    }else
     {
         // ui->db_text->setText("DB Non-connectée 2");
         qDebug() << "Error: connection with database failed 2";
@@ -268,17 +249,13 @@ void MainWindow::on_pushButton_clicked()
 
 
 
+
 void MainWindow::on_pushButton_2_clicked()
 {
-    if(mydb.open()){
-        QSqlQuery query;
-        query.prepare("UPDATE teams SET victoires = 0, defaites = 0, nuls = 0;");
-        query.exec();
-        MainWindow::on_loadTable_clicked();
-        qDebug() << "sqfqgq";
+    QSqlQuery query;
+    query.prepare("UPDATE teams SET victoires =0 , defaites=0 , nuls=0; ");
+    query.exec();
+    MainWindow::on_loadTable_clicked();
 
-    }
-    else {
-        mydb.close();
-    }
+
 }
